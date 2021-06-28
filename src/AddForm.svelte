@@ -43,11 +43,25 @@
 </form>
 
 <style>
-    button{
-        width: 150px;
-        border-radius: 6px;
-    }
+    button:hover{
+		font-family: 'Montserrat', sans-serif;
+		color: #121212;
+		background: white;
+		width: 100px;
+		margin: 0 5px;
+	}
+	button{
+		border: 2px solid #121212;
+		transition-property: background, color;
+		transition-duration: 0.25s;
+		font-family: 'Montserrat', sans-serif;
+		color: white;
+		background: #121212;
+		width: 100px;
+		margin: 0 5px;
+	}
     input[type=text] {
+        font-family: 'Montserrat', sans-serif;
         width: 100%;
         padding: 10px 10px;
         margin: 5px 0;
