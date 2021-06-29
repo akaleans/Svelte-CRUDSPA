@@ -1,10 +1,16 @@
 <script>
+    // Import our event dispatcher used to send data to our App component.
     import { createEventDispatcher } from 'svelte';
 
     let dispatch = createEventDispatcher();
 
+    // Our contact to be edited, sent by App component.
     export let editableContact;
 
+    /*
+    On submitting our form, creates the new contact to replace the current contact at contacts.id
+    and dispatches our event back to App component.
+    */
     const onSubmit = () => {
         const contact = {
             id: editableContact.id,
@@ -18,10 +24,10 @@
             phone: editableContact.phone
         };
         dispatch('editContact', contact);
-        console.log(contact);
     };
 </script>
 
+<!-- Default Form -->
 <form on:submit|preventDefault={onSubmit}>
     <input type="text" placeholder="First Name" bind:value={editableContact.first_name}>
     <input type="text" placeholder="Last Name" bind:value={editableContact.last_name}>
@@ -40,7 +46,7 @@
 		color: #121212;
 		background: white;
 		width: 150px;
-		margin: 0 5px;
+		margin: 36px 5px 36px 0;
 	}
 	button{
 		border: 2px solid #121212;
@@ -50,7 +56,7 @@
 		color: white;
 		background: #121212;
 		width: 150px;
-		margin: 0 5px;
+		margin: 36px 5px 36px 0;
 	}
     input[type=text] {
         font-family: 'Montserrat', sans-serif;

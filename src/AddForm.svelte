@@ -1,8 +1,10 @@
 <script>
+    // Import our event dispatcher used to send data to our App component.
     import { createEventDispatcher } from 'svelte';
 
     let dispatch = createEventDispatcher();
 
+    // Bringing in our current "id" count and creating temporary variables.
     export let count;
     let first_name;
     let last_name;
@@ -13,6 +15,10 @@
     let email;
     let phone;
 
+    /*
+    On submitting our form, creates the new contact to be added to our contacts list, increments count
+    and dispatches our event back to our App component.
+    */
     const onSubmit = () => {
         const contact = {
             id: count,
@@ -30,6 +36,7 @@
     };
 </script>
 
+<!-- Default form -->
 <form on:submit|preventDefault={onSubmit}>
     <input type="text" placeholder="First Name" bind:value={first_name}>
     <input type="text" placeholder="Last Name" bind:value={last_name}>
@@ -47,8 +54,8 @@
 		font-family: 'Montserrat', sans-serif;
 		color: #121212;
 		background: white;
-		width: 100px;
-		margin: 0 5px;
+		width: 150px;
+		margin: 36px 5px 36px 0;
 	}
 	button{
 		border: 2px solid #121212;
@@ -57,8 +64,8 @@
 		font-family: 'Montserrat', sans-serif;
 		color: white;
 		background: #121212;
-		width: 100px;
-		margin: 0 5px;
+		width: 150px;
+		margin: 36px 5px 36px 0;
 	}
     input[type=text] {
         font-family: 'Montserrat', sans-serif;
