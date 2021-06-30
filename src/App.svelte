@@ -41,8 +41,8 @@
 	to be reassigned in many cases.
 	*/
 	$: sortedData = prefix ? contacts.filter(contact => {
-		return (contact.id === parseInt(prefix)) ||
-		(contact.first_name.toLocaleLowerCase().startsWith(prefix.toLocaleLowerCase())) ||
+		// return (contact.id === parseInt(prefix)) ||
+		return (contact.first_name.toLocaleLowerCase().startsWith(prefix.toLocaleLowerCase())) ||
 		(contact.last_name.toLocaleLowerCase().startsWith(prefix.toLocaleLowerCase())) ||
 		(contact.address.toLocaleLowerCase().startsWith(prefix.toLocaleLowerCase())) ||
 		(contact.state.toLocaleLowerCase().startsWith(prefix.toLocaleLowerCase())) ||
@@ -180,14 +180,16 @@
 			 -->
 			<tr>
 				{#each headers as header}
-					<th class:highlighted={header === highlight} on:click={() => (header === "id") ? sortByNumber(header) : sortByString(header)}>{header.replace('_', ' ')}</th>
+					{#if header != "id"}
+						<th class:highlighted={header === highlight} on:click={() => (header === "id") ? sortByNumber(header) : sortByString(header)}>{header.replace('_', ' ')}</th>
+					{/if}
 				{/each}
 			</tr>
 			
 			<!-- Create table data and edit/delete buttons -->
 			{#each sortedData as contact}
 				<tr>
-					<td>{contact.id}</td>
+					<!-- <td>{contact.id}</td> -->
 					<td>{contact.first_name}</td>
 					<td>{contact.last_name}</td>
 					<td>{contact.address}</td>
