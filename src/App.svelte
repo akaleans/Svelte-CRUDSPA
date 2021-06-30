@@ -72,6 +72,17 @@
 		highlight = header;
 	};
 
+	/*
+	sortByNumber will always take in "id" as our header because our only int value in our contacts list is "id".
+	Also highlights "id".
+	*/
+	const sortByNumber = (header) => {
+		sortedData = sortedData.sort((obj1, obj2) => {
+			return obj1[header] - obj2[header];
+		});
+		highlight = header;
+	}
+
 	// Simple function to close our Modal and set message to default.
 	const closeModal = () => {
 		message = 'default';
@@ -169,7 +180,7 @@
 			 -->
 			<tr>
 				{#each headers as header}
-					<th class:highlighted={header === highlight} on:click={() => sortByString(header)}>{header.replace('_', ' ')}</th>
+					<th class:highlighted={header === highlight} on:click={() => (header === "id") ? sortByNumber(header) : sortByString(header)}>{header.replace('_', ' ')}</th>
 				{/each}
 			</tr>
 			
